@@ -34,4 +34,8 @@ FactoryBot.define do
   sequence :expired_at do |n|
     "expired_at 2020-04-#{n}"
   end
+
+  sequence :string do |n|
+    "string#{n}"
+  end
 end
