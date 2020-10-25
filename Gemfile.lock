@@ -179,9 +179,12 @@ GEM
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
+<<<<<<< HEAD
     simple_form (5.0.3)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
+=======
+>>>>>>> resolve conflicts
     slim (4.1.0)
       temple (>= 0.7.6, < 0.9)
       tilt (>= 2.0.6, < 2.1)
@@ -247,7 +250,10 @@ DEPENDENCIES
   rubocop
   sass-rails (>= 6)
   selenium-webdriver
+<<<<<<< HEAD
   simple_form
+=======
+>>>>>>> resolve conflicts
   slim-rails
   state_machines-activerecord
   web-console (>= 3.3.0)
