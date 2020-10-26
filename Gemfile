@@ -34,8 +34,9 @@ group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails'
   gem 'rubocop'
-  gem 'state_machines-activerecord'
+  gem 'simple_form'
   gem 'slim-rails'
+  gem 'state_machines-activerecord'
 end
 
 group :development do
