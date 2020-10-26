@@ -5,4 +5,6 @@ Rails.application.routes.draw do
     resource :board, only: :show
     resource :session, only: %i[new create destroy]
   end
+
+  resource :session, only: [:new, :create, :destroy]
 end
