@@ -27,8 +27,8 @@ FactoryBot.define do
     "description#{n}"
   end
 
-  sequence :state do |n|
-    "state#{n}"
+  sequence :state do
+    'new_task'
   end
 
   sequence :expired_at do |n|
