@@ -200,10 +200,7 @@ GEM
     state_machines-activerecord (0.6.0)
       activerecord (>= 4.1)
       state_machines-activemodel (>= 0.5.0)
-<<<<<<< HEAD
-=======
     temple (0.8.2)
->>>>>>> resolve conflicts
     thor (1.0.1)
     thread_safe (0.3.6)
     tilt (2.0.10)
