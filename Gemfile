@@ -26,6 +26,10 @@ gem 'bcrypt', '~> 3.1.7'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
+gem 'active_model_serializers'
+gem 'kaminari'
+gem 'ransack', github: 'activerecord-hackery/ransack'
+gem 'responders'
 gem 'simple_form'
 gem 'slim-rails'
 gem 'state_machines-activerecord'
