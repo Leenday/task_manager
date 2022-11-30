@@ -28,7 +28,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'active_model_serializers'
 gem 'kaminari'
-gem 'ransack', github: 'activerecord-hackery/ransack'
+gem 'ransack'
 gem 'responders'
 gem 'simple_form'
 gem 'slim-rails'
