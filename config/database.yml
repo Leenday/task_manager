@@ -12,7 +12,7 @@ development:
 test:
   <<: *default
   database: task_manager_test
-  port: <% (ENV['CI_NAME'] == 'codeship') ? 5433 : 5432 %>
+  port: <%= (ENV['CI_NAME'] == 'codeship') ? 5433 : 5432 %>
 
 production:
   <<: *default
