@@ -1,4 +1,6 @@
 class Api::V1::ApplicationController < ApplicationController
+  respond_to :json
+
   include AuthHelper
   RANSACK_DEFAULT_SORT = 'id ASC'.freeze
 
