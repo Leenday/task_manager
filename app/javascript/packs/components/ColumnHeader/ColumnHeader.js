@@ -26,7 +26,7 @@ function ColumnHeader({ column, onLoadMore }) {
         <b>{title}</b> ({count}/{totalCount || '…'})
       </div>
       <div className={styles.actions}>
-        {currentPage === totalPages ? null : (
+        {currentPage >= totalPages ? null : (
           <IconButton aria-label="Load more" onClick={() => handleLoadMore()}>
             <SystemUpdateAltIcon fontSize="small" />
           </IconButton>
@@ -38,9 +38,9 @@ function ColumnHeader({ column, onLoadMore }) {
 
 ColumnHeader.propTypes = {
   column: PropTypes.shape({
-    id: PropTypes.number,
+    id: PropTypes.string,
     title: PropTypes.string,
-    cards: PropTypes.shape([]),
+    cards: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
     meta: PropTypes.shape({
       totalCount: PropTypes.number,
       currentPage: PropTypes.number,
