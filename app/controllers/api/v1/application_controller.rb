@@ -3,6 +3,7 @@ class Api::V1::ApplicationController < ApplicationController
 
   include AuthHelper
   RANSACK_DEFAULT_SORT = 'id ASC'.freeze
+  RANSACK_DESC_SORT = 'id DESC'.freeze
 
   def self.responder
     JsonResponder
@@ -20,6 +21,10 @@ class Api::V1::ApplicationController < ApplicationController
 
   def ransack_params
     params.to_unsafe_h.fetch(:q, { s: RANSACK_DEFAULT_SORT })
+  end
+
+  def ransack_desc_params
+    params.to_unsafe_h.fetch(:q).merge({ s: RANSACK_DESC_SORT })
   end
 
   def page

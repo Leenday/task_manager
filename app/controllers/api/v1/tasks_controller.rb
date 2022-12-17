@@ -7,7 +7,7 @@ class Api::V1::TasksController < Api::V1::ApplicationController
 
   def index
     tasks = Task.all
-                .ransack(ransack_params)
+                .ransack(ransack_desc_params)
                 .result
                 .page(page)
                 .per(per_page)
@@ -16,6 +16,7 @@ class Api::V1::TasksController < Api::V1::ApplicationController
   end
 
   def create
+    params['task']['author_id'] = current_user.id
     task = current_user.my_tasks.new(task_params)
     task.save
 

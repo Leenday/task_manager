@@ -3,7 +3,12 @@ import KanbanBoard from '@asseinfo/react-kanban';
 import { propOr } from 'ramda';
 
 import Task from '../Task';
+import AddPopup from '../AddPopup';
 import ColumnHeader from '../ColumnHeader';
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
+import useStyles from './useStyles';
+import TaskForm from '../../../forms/TaskForm';
 import TasksRepository from 'repositories/TasksRepository';
 
 const STATES = [
@@ -15,6 +20,11 @@ const STATES = [
   { key: 'released', value: 'Released' },
   { key: 'archived', value: 'Archived' },
 ];
+
+const MODES = {
+  ADD: 'add',
+  NONE: 'none',
+};
 
 const initialBoard = {
   columns: STATES.map((column) => ({
@@ -28,6 +38,7 @@ const initialBoard = {
 function TaskBoard() {
   const [board, setBoard] = useState(initialBoard);
   const [boardCards, setBoardCards] = useState([]);
+  const [mode, setMode] = useState(MODES.NONE);
   useEffect(() => loadBoard(), []);
   useEffect(() => generateBoard(), [boardCards]);
 
@@ -89,14 +100,38 @@ function TaskBoard() {
       });
   };
 
+  const handleAddPopupOpen = () => {
+    setMode(MODES.ADD);
+  };
+
+  const handleClose = () => {
+    setMode(MODES.NONE);
+  };
+
+  const handleTaskCreate = (params) => {
+    const attributes = TaskForm.attributesToSubmit(params);
+    return TasksRepository.create(attributes).then(({ data: { task } }) => {
+      loadColumnInitial(task.state);
+      handleClose();
+    });
+  };
+
+  const styles = useStyles();
+
   return (
-    <KanbanBoard
-      renderCard={(card) => <Task task={card} />}
-      renderColumnHeader={(column) => <ColumnHeader column={column} onLoadMore={loadColumnMore} />}
-      onCardDragEnd={handleCardDragEnd}
-    >
-      {board}
-    </KanbanBoard>
+    <>
+      <KanbanBoard
+        renderCard={(card) => <Task task={card} />}
+        renderColumnHeader={(column) => <ColumnHeader column={column} onLoadMore={loadColumnMore} />}
+        onCardDragEnd={handleCardDragEnd}
+      >
+        {board}
+      </KanbanBoard>
+      {mode === MODES.ADD && <AddPopup onCardCreate={handleTaskCreate} onClose={handleClose} />}
+      <Fab className={styles.addButton} onClick={handleAddPopupOpen} color="primary" aria-label="add">
+        <AddIcon />
+      </Fab>
+    </>
   );
 }
 

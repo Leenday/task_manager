@@ -17,10 +17,10 @@ export default {
     return FetchHelper.put(path, { task });
   },
 
-  // create(task = {}) {
-  //   const path = routes.apiV1TaskPath(task);
-  //   return FetchHelper.post(path);
-  // },
+  create(task = {}) {
+    const path = routes.apiV1TasksPath();
+    return FetchHelper.post(path, { task });
+  },
 
   // destroy(id) {
   //   const path = routes.apiV1TaskPath(id);
