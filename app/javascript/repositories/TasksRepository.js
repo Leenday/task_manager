@@ -22,8 +22,8 @@ export default {
     return FetchHelper.post(path, { task });
   },
 
-  // destroy(id) {
-  //   const path = routes.apiV1TaskPath(id);
-  //   return FetchHelper.delete(path);
-  // },
+  destroy(id) {
+    const path = routes.apiV1TaskPath(id);
+    return FetchHelper.delete(path);
+  },
 };
