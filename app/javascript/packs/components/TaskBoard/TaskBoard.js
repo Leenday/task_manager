@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import KanbanBoard from '@asseinfo/react-kanban';
 import { propOr } from 'ramda';
-
-import Task from '../Task';
-import AddPopup from '../AddPopup';
-import EditPopup from '../EditPopup';
-import ColumnHeader from '../ColumnHeader';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
+
+import Task from 'packs/components/Task';
+import AddPopup from 'packs/components/AddPopup';
+import EditPopup from 'packs/components/EditPopup';
+import ColumnHeader from 'packs/components/ColumnHeader';
 import useStyles from './useStyles';
-import TaskForm from '../../../forms/TaskForm';
+import TaskForm from 'forms/TaskForm';
 import TasksRepository from 'repositories/TasksRepository';
 
 const STATES = [
@@ -47,7 +47,7 @@ function TaskBoard() {
 
   const loadColumn = (state, page, perPage) =>
     TasksRepository.index({
-      q: { stateEq: state },
+      q: { stateEq: state, s: 'id DESC' },
       page,
       perPage,
     });
