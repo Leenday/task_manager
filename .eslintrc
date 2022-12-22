@@ -34,6 +34,7 @@
     ],
     "no-param-reassign": ["error", { "props": true, "ignorePropertyModificationsFor": ["state"] }],
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/require-default-props": "off",
     "import/no-unresolved": ["off"],
     "import/no-absolute-path": ["off"],
     "import/order": ["off"],
