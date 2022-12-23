@@ -1,10 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import IconButton from '@material-ui/core/IconButton';
 import SystemUpdateAltIcon from '@material-ui/icons/SystemUpdateAlt';
 
 import useStyles from './useStyles';
+import ColumnHeaderPresenter from 'presenters/ColumnHeaderPresenter';
 
 function ColumnHeader({ column, onLoadMore }) {
   const styles = useStyles();
@@ -37,17 +37,7 @@ function ColumnHeader({ column, onLoadMore }) {
 }
 
 ColumnHeader.propTypes = {
-  column: PropTypes.shape({
-    id: PropTypes.string,
-    title: PropTypes.string,
-    cards: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
-    meta: PropTypes.shape({
-      totalCount: PropTypes.number,
-      currentPage: PropTypes.number,
-      totalPages: PropTypes.number,
-    }),
-  }),
-  onLoadMore: PropTypes.func,
+  column: ColumnHeaderPresenter.shape(),
 };
 
 export default ColumnHeader;

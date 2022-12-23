@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
 import { isNil } from 'ramda';
 
 import Button from '@material-ui/core/Button';
@@ -91,11 +90,7 @@ function EditPopup({ cardId, onClose, onCardDestroy, onCardLoad, onCardUpdate })
 }
 
 EditPopup.propTypes = {
-  cardId: PropTypes.number.isRequired,
-  onClose: PropTypes.func.isRequired,
-  onCardDestroy: PropTypes.func.isRequired,
-  onCardLoad: PropTypes.func.isRequired,
-  onCardUpdate: PropTypes.func.isRequired,
+  editPopup: EditPopupPresenter.shape(),
 };
 
 export default EditPopup;

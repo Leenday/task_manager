@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import { has } from 'ramda';
 
 import Button from '@material-ui/core/Button';
