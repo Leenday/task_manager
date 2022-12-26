@@ -31,7 +31,6 @@ function Task({ task, onClick }) {
   );
 }
 
-// Task.propTypes = TaskPresenter.shape();
 Task.propTypes = {
   task: TaskPresenter.shape(),
 };
