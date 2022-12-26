@@ -32,7 +32,7 @@ FactoryBot.define do
   end
 
   sequence :expired_at do |n|
-    "expired_at 2020-04-#{n}"
+    "2020-04-#{n}".to_date
   end
 
   sequence :string do |n|
