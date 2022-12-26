@@ -10,6 +10,7 @@ import CardHeader from '@material-ui/core/CardHeader';
 import CloseIcon from '@material-ui/icons/Close';
 import IconButton from '@material-ui/core/IconButton';
 import Modal from '@material-ui/core/Modal';
+import PropTypes from 'prop-types';
 
 import Form from './components/Form';
 import TaskPresenter from 'presenters/TaskPresenter';
@@ -90,7 +91,11 @@ function EditPopup({ cardId, onClose, onCardDestroy, onCardLoad, onCardUpdate })
 }
 
 EditPopup.propTypes = {
-  editPopup: EditPopupPresenter.shape(),
+  cardId: PropTypes.number.isRequired,
+  onClose: PropTypes.func.isRequired,
+  onCardDestroy: PropTypes.func.isRequired,
+  onCardLoad: PropTypes.func.isRequired,
+  onCardUpdate: PropTypes.func.isRequired,
 };
 
 export default EditPopup;

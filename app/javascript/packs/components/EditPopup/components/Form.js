@@ -2,11 +2,11 @@ import React from 'react';
 import { has } from 'ramda';
 
 import TextField from '@material-ui/core/TextField';
+import PropTypes from 'prop-types';
 
 import TaskPresenter from 'presenters/TaskPresenter';
 import UserSelect from 'packs/components/UserSelect';
 import useStyles from './useStyles';
-import FormPresenter from 'presenters/FormPresenter';
 
 function Form({ errors, onChange, task }) {
   const handleChangeTextField = (fieldName) => (event) => onChange({ ...task, [fieldName]: event.target.value });
@@ -57,7 +57,14 @@ function Form({ errors, onChange, task }) {
 }
 
 Form.propTypes = {
-  form: FormPresenter.shape(),
+  onChange: PropTypes.func.isRequired,
+  task: PropTypes.shape().isRequired,
+  errors: PropTypes.shape({
+    name: PropTypes.arrayOf(PropTypes.string),
+    description: PropTypes.arrayOf(PropTypes.string),
+    author: PropTypes.arrayOf(PropTypes.string),
+    assignee: PropTypes.arrayOf(PropTypes.string),
+  }),
 };
 
 Form.defaultProps = {
