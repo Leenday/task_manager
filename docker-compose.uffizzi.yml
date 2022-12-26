@@ -1,20 +1,27 @@
 x-uffizzi:
   ingress:
     service: app
-    port: 3330
+    port: 3000
 
 services:
   app:
     image: "${APP_IMAGE}"
-    command: ["bash", "-c", "bundle exec rails db:create db:migrate && bundle exec rails db:seed && bundle exec rails s -b '0.0.0.0' -p 3330"]
+    command:
+      [
+        "bash",
+        "-c",
+        "bundle exec rails db:create db:migrate && bundle exec rails db:seed && bundle exec rails s -b '0.0.0.0' -p 3000"
+      ]
     ports:
-      - 3330:3330
+      - 3000:3000
     depends_on:
       - db
-    environment: &app-environment
+    environment:
+      &app-environment
       DATABASE_USERNAME: postgres
       DATABASE_PASSWORD: postgres
-      RAILS_PORT: 3330
+      RAILS_PORT: 3000
+
       ROLLBAR_ACCESS_TOKEN: fake
       NEWRELIC_LICENSE_KEY: fake
     deploy:
