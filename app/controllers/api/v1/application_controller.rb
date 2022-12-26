@@ -1,4 +1,4 @@
-class Api::V1::ApplicationController < ApplicationController
+class Api::V1::ApplicationController < Api::ApplicationController
   respond_to :json
 
   include AuthHelper

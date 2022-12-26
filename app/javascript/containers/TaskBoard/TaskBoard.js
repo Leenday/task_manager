@@ -42,8 +42,6 @@ function TaskBoard() {
     setOpenedTaskId(null);
   };
 
-  // const loadColumnMore = () => { };
-  // const handleCardDragEnd = () => { };
   const handleTaskCreate = (params) => {
     handleClose();
     return taskCreate(params);

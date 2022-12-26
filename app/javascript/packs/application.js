@@ -10,6 +10,7 @@ require('channels');
 import 'material-design-lite/material.js';
 import WebpackerReact from 'webpacker-react';
 import App from 'App';
+import '/app/assets/stylesheets/application.css';
 
 WebpackerReact.setup({ App });
 
