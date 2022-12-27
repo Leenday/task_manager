@@ -6,6 +6,7 @@ const useStyles = makeStyles(() => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
+    width: 250,
   },
 }));
 
