@@ -11,7 +11,7 @@ import useStyles from './useStyles';
 import TaskPresenter from 'presenters/TaskPresenter';
 
 function Task({ task, onClick }) {
-  const styles = useStyles;
+  const styles = useStyles();
   const handleClick = () => onClick(task);
   const action = (
     <IconButton onClick={handleClick}>
