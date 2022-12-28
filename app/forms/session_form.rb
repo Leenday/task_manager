@@ -19,7 +19,7 @@ class SessionForm
   def user_valid?
     if user.blank? || !user.authenticate(password)
       errors.add(:email, "email or password doesn't match")
+      Rollbar.error("email or password doesn't match")
     end
   end
-
 end
