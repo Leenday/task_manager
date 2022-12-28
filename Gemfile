@@ -29,6 +29,8 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'active_model_serializers'
 gem 'js-routes'
 gem 'kaminari'
+gem 'newrelic-infinite_tracing'
+gem 'newrelic_rpm'
 gem 'ransack'
 gem 'responders'
 gem 'simple_form'
