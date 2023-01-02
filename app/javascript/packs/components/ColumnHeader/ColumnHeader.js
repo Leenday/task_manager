@@ -1,10 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import IconButton from '@material-ui/core/IconButton';
 import SystemUpdateAltIcon from '@material-ui/icons/SystemUpdateAlt';
 
 import useStyles from './useStyles';
+import PropTypes from 'prop-types';
 
 function ColumnHeader({ column, onLoadMore }) {
   const styles = useStyles();

@@ -2,7 +2,7 @@ name: Build Images and Deploy Preview Environment
 
 on:
   pull_request:
-    types: [opened,reopened,synchronize,closed]
+    types: [opened, reopened, synchronize, closed]
 
 jobs:
   build-app:
@@ -31,7 +31,7 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           context: .
-          
+
   render-compose-file:
     name: Render Docker Compose File
     runs-on: ubuntu-latest
@@ -49,7 +49,7 @@ jobs:
           export APP_IMAGE
           DATABASE_USERNAME=postgres
           DATABASE_PASSWORD=postgres
-          RAILS_PORT=3330
+          RAILS_PORT=3000
           ROLLBAR_ACCESS_TOKEN=fake
           NEWRELIC_LICENSE_KEY=fake
           export DATABASE_USERNAME
@@ -85,13 +85,13 @@ jobs:
       contents: read
       pull-requests: write
       id-token: write
-      
+
   delete-uffizzi-preview:
     name: Use Remote Workflow to Delete an Existing Preview
     uses: UffizziCloud/preview-action/.github/workflows/reusable.yaml@v2
     if: ${{ github.event_name == 'pull_request' && github.event.action == 'closed' }}
     with:
-      compose-file-cache-key: ''
+      compose-file-cache-key: ""
       compose-file-cache-path: docker-compose.rendered.yml
       server: https://app.uffizzi.com/
     permissions:

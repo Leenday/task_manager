@@ -16,7 +16,7 @@ class Api::V1::TasksController < Api::V1::ApplicationController
   end
 
   def create
-    params['task']['author_id'] = current_user.id
+    params['task']['author_id'] = current_user.id if params.dig('task', 'author_id').nil?
     task = current_user.my_tasks.new(task_params)
     task.save
 
@@ -40,6 +40,6 @@ class Api::V1::TasksController < Api::V1::ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:name, :description, :author_id, :assignee_id, :state_event, :expired_at)
+    params.require(:task).permit(:id, :name, :description, :author_id, :assignee_id, :state_event, :expired_at)
   end
 end
