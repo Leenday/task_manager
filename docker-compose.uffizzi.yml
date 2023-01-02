@@ -21,7 +21,6 @@ services:
       DATABASE_USERNAME: postgres
       DATABASE_PASSWORD: postgres
       RAILS_PORT: 3000
-
       ROLLBAR_ACCESS_TOKEN: fake
       NEWRELIC_LICENSE_KEY: fake
     deploy:
