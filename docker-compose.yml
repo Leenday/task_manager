@@ -3,7 +3,8 @@ version: '3.7'
 services:
   web:
     build: .
-    volumes: &web-volumes
+    volumes:
+      &web-volumes
       - &app-volume .:/task_manager:cached
       - ~/.ssh:/root/.ssh
       - ~/.bash_history:/root/.bash_history
@@ -14,7 +15,8 @@ services:
       - 3332:3332
     depends_on:
       - db
-    environment: &web-environment
+    environment:
+      &web-environment
       BUNDLE_PATH: /bundle_cache
       GEM_HOME: /bundle_cache
       GEM_PATH: /bundle_cache
@@ -23,6 +25,9 @@ services:
       DATABASE_HOST: db
       DATABASE_USERNAME: postgres
       DATABASE_PASSWORD: postgres
+
+      ROLLBAR_ACCESS_TOKEN: fake
+      NEWRELIC_LICENSE_KEY: fake
     command: bundle exec rails s -b '0.0.0.0' -p 3330
 
   db:
