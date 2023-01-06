@@ -47,7 +47,7 @@ services:
       POSTGRES_PASSWORD: postgres
 
   redis:
-    image: redis:5.0.9-alpine
+    image: redis:7.0.7-alpine
 
   sidekiq:
     build: .
