@@ -18,20 +18,20 @@ class Api::V1::TasksController < Api::V1::ApplicationController
   def create
     params['task']['author_id'] = current_user.id if params.dig('task', 'author_id').nil?
     task = current_user.my_tasks.new(task_params)
-    UserMailer.with({ user: current_user, task: task }).task_created.deliver_now if task.save
+    UserMailer.with({ user: current_user, task: task }).task_created.deliver_later if task.save
     respond_with(task, serializer: TaskSerializer, location: nil)
   end
 
   def update
     task = Task.find(params[:id])
-    UserMailer.with({ task: task }).task_updated.deliver_now if task.update(task_params)
+    UserMailer.with({ task: task }).task_updated.deliver_later if task.update(task_params)
 
     respond_with(task, serializer: TaskSerializer)
   end
 
   def destroy
     task = Task.find(params[:id])
-    UserMailer.with({ task: task }).task_deleted.deliver_now if task.destroy
+    UserMailer.with({ task: task }).task_deleted.deliver_later if task.destroy
 
     respond_with(task)
   end
