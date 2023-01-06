@@ -14,7 +14,11 @@ class Web::PasswordResetsController < Web::ApplicationController
 
   def edit
     @user = GlobalID::Locator.locate_signed(params[:token], for: 'password_reset')
-    redirect_to new_session_path if @user.nil? || (@user.reset_password_token_digest != params[:token])
+    if @user.nil?
+      redirect_to new_session_path
+    elsif @user.reset_password_token_digest != params[:token]
+      redirect_to new_session_path
+    end
   end
 
   def update
