@@ -6,6 +6,7 @@ require_relative '../config/environment'
 require 'rails/test_help'
 
 class ActiveSupport::TestCase
+  include ActionMailer::TestHelper
   include FactoryBot::Syntax::Methods
   include AuthHelper
   # Run tests in parallel with specified workers

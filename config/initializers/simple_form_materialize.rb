@@ -8,7 +8,8 @@ SimpleForm.setup do |config|
   config.boolean_style = :inline
   config.item_wrapper_tag = :p
 
-  config.wrappers :materialize_form, tag: 'div', class: 'mdl-textfield mdl-js-textfield mdl-textfield--floating-label', error_class: 'is-invalid' do |b|
+  config.wrappers :materialize_form, tag: 'div', class: 'mdl-textfield mdl-js-textfield mdl-textfield--floating-label',
+                                     error_class: 'is-invalid' do |b|
     b.use :html5
     b.use :placeholder
     b.optional :maxlength

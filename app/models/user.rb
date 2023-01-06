@@ -6,4 +6,8 @@ class User < ApplicationRecord
   validates :first_name, presence: true, length: { minimum: 2 }
   validates :last_name, presence: true, length: { minimum: 2 }
   validates :email, presence: true, uniqueness: true, format: { with: /\w*@{1}\w*/ }
+
+  def generate_token
+    to_sgid(for: 'password_reset', expires_in: 1.day).to_s
+  end
 end

@@ -1,0 +1,7 @@
+h4 Forgot password? No problem!
+p Type your email here, we'll send you link.
+= simple_form_for :user, url: password_resets_path do |f|
+  p
+    = f.input :email
+  p
+    = f.button :submit, "Send"
