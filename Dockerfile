@@ -1,7 +1,7 @@
 FROM ruby:2.7.1-alpine
 
-ARG RAILS_ROOT=/app
-ARG PACKAGES="vim openssl-dev postgresql-dev build-base curl nodejs yarn less tzdata git postgresql-client bash screen"
+ARG RAILS_ROOT=/task_manager
+ARG PACKAGES="vim openssl-dev postgresql-dev build-base curl nodejs yarn less tzdata git postgresql-client bash screen gcompat python2"
 
 RUN apk update \
     && apk upgrade \
@@ -21,5 +21,5 @@ RUN yarn install --frozen-lockfile
 ADD . $RAILS_ROOT
 ENV PATH=$RAILS_ROOT/bin:${PATH}
 
-EXPOSE 3000
-CMD bundle exec rails s -b '0.0.0.0' -p 3000:
+EXPOSE 3330
+CMD bundle exec rails s -b '0.0.0.0' -p 3330
