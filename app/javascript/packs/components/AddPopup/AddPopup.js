@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import { has } from 'ramda';
 
 import Button from '@material-ui/core/Button';
@@ -11,6 +10,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import IconButton from '@material-ui/core/IconButton';
 import Modal from '@material-ui/core/Modal';
 import TextField from '@material-ui/core/TextField';
+import PropTypes from 'prop-types';
 
 import TaskForm from 'forms/TaskForm';
 import UserSelect from 'packs/components/UserSelect';

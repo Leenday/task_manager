@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
 import { isNil } from 'ramda';
 
 import Button from '@material-ui/core/Button';
@@ -11,6 +10,7 @@ import CardHeader from '@material-ui/core/CardHeader';
 import CloseIcon from '@material-ui/icons/Close';
 import IconButton from '@material-ui/core/IconButton';
 import Modal from '@material-ui/core/Modal';
+import PropTypes from 'prop-types';
 
 import Form from './components/Form';
 import TaskPresenter from 'presenters/TaskPresenter';

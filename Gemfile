@@ -33,6 +33,7 @@ gem 'newrelic-infinite_tracing'
 gem 'newrelic_rpm'
 gem 'ransack'
 gem 'responders'
+gem 'rollbar'
 gem 'simple_form'
 gem 'slim-rails'
 gem 'state_machines-activerecord'
@@ -40,6 +41,7 @@ gem 'webpacker-react'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'bullet'
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails'
   gem 'rubocop'
@@ -56,6 +58,7 @@ group :test do
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
+  gem 'simplecov', require: false
   gem 'webdrivers'
 end
 
