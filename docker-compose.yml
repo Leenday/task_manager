@@ -15,6 +15,8 @@ services:
       - 3332:3332
     depends_on:
       - db
+      - redis
+      - sidekiq
     environment:
       &web-environment
       BUNDLE_PATH: /bundle_cache
@@ -32,6 +34,8 @@ services:
       MAILER_PORT: fake
       MAILER_DOMAIN: fake
       MAILER_AUTHENTICATION: fake
+
+      REDIS_URL: redis://redis
     command: bundle exec rails s -b '0.0.0.0' -p 3330
 
   db:
@@ -42,5 +46,15 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
 
+  redis:
+    image: redis:7.0.7-alpine
+
+  sidekiq:
+    build: .
+    command: bundle exec sidekiq -C /task_manager/config/sidekiq.yml
+    environment: *web-environment
+    volumes: *web-volumes
+    depends_on:
+      - redis
 volumes:
   bundle_cache:
