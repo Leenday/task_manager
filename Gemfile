@@ -27,8 +27,10 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'active_model_serializers'
+gem 'file_validators'
 gem 'js-routes'
 gem 'kaminari'
+gem 'mini_magick'
 gem 'ransack'
 gem 'responders'
 gem 'sidekiq', '~> 6.5.0'
@@ -38,6 +40,7 @@ gem 'sidekiq-unique-jobs'
 gem 'simple_form'
 gem 'slim-rails'
 gem 'state_machines-activerecord'
+gem 'virtus'
 gem 'webpacker-react'
 
 group :development, :test do
