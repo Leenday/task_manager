@@ -21,6 +21,14 @@ const useStyles = makeStyles(() => ({
     display: 'flex',
     justifyContent: 'flex-end',
   },
+
+  imageUploadContainer: {
+    display: 'flex',
+  },
+
+  previewContainer: {
+    display: 'flex',
+  },
 }));
 
 export default useStyles;

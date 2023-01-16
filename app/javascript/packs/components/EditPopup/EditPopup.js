@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { isNil } from 'ramda';
+import { isNil, has } from 'ramda';
 
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
@@ -14,6 +14,8 @@ import PropTypes from 'prop-types';
 
 import Form from './components/Form';
 import TaskPresenter from 'presenters/TaskPresenter';
+import ImageUpload from 'packs/components/ImageUpload';
+import TasksRepository from 'repositories/TasksRepository';
 
 import useStyles from './useStyles';
 
@@ -26,6 +28,14 @@ function EditPopup({ cardId, onClose, onCardDestroy, onCardLoad, onCardUpdate })
   useEffect(() => {
     onCardLoad(cardId).then(setTask);
   }, []);
+
+  const onRemoveImage = () => {
+    TasksRepository.removeImage(task.id);
+  };
+
+  const onAttachImage = (attachment) => {
+    TasksRepository.attachImage(attachment, task.id);
+  };
 
   const handleCardUpdate = () => {
     setSaving(true);
@@ -49,6 +59,7 @@ function EditPopup({ cardId, onClose, onCardDestroy, onCardLoad, onCardUpdate })
       alert(`Destrucion Failed! Error: ${error.message}`);
     });
   };
+
   const isLoading = isNil(task);
 
   return (
@@ -84,6 +95,20 @@ function EditPopup({ cardId, onClose, onCardDestroy, onCardLoad, onCardUpdate })
           >
             Destroy
           </Button>
+          {isNil(TaskPresenter.imageUrl(task)) ? (
+            <div className={styles.imageUploadContainer}>
+              <ImageUpload onUpload={onAttachImage} />
+            </div>
+          ) : (
+            <div className={styles.previewContainer}>
+              <a href={TaskPresenter.imageUrl(task)}>
+                <img className={styles.preview} src={TaskPresenter.imageUrl(task)} alt="Attachment" />
+              </a>
+              <Button variant="contained" size="small" color="primary" onClick={onRemoveImage}>
+                Remove image
+              </Button>
+            </div>
+          )}
         </CardActions>
       </Card>
     </Modal>

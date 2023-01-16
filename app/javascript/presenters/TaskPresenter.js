@@ -10,6 +10,7 @@ export default new PropTypesPresenter(
     assignee: PropTypes.object,
     transitions: PropTypes.array,
     state: PropTypes.string,
+    imageUrl: PropTypes.string,
   },
   {
     title(task) {
